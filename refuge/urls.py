@@ -1,4 +1,9 @@
-from django.urls import path
-from . import views
+from rest_framework import routers
+from .api import RefugeViewSet, AnimalViewSet, EmployeeViewSet
 
-urlpatterns = [path('api/refuge/', views.RefugeListCreate.as_view())]
+router = routers.DefaultRouter()
+router.register('api/refuges', RefugeViewSet, 'refuges')
+router.register('api/animals', AnimalViewSet, 'animals')
+router.register('api/employees', EmployeeViewSet, 'employees')
+
+urlpatterns = router.urls
